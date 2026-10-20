@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 
-export const Route = createFileRoute('/map')({
+export const Route = createFileRoute('/_authenticated/map')({
   component: MapPage,
 })
 

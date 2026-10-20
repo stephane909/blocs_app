@@ -10,100 +10,100 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ConnexionRouteImport } from './routes/connexion'
-import { Route as DashboardRouteImport } from './routes/dashboard'
-import { Route as MapRouteImport } from './routes/map'
-import { Route as StatsRouteImport } from './routes/stats'
-import { Route as CategoryCategoryIdRouteImport } from './routes/category.$categoryId'
-import { Route as ProjectsIndexRouteImport } from './routes/projects.index'
-import { Route as ProjectsProjectIdRouteImport } from './routes/projects.$projectId'
-import { Route as ProjectsNewRouteImport } from './routes/projects.new'
+import { Route as AuthenticatedRouteImport } from './routes/_authenticated'
+import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
+import { Route as AuthenticatedMapRouteImport } from './routes/_authenticated/map'
+import { Route as AuthenticatedStatsRouteImport } from './routes/_authenticated/stats'
+import { Route as AuthenticatedCategoryCategoryIdRouteImport } from './routes/_authenticated/category.$categoryId'
+import { Route as AuthenticatedProjectsIndexRouteImport } from './routes/_authenticated/projects.index'
+import { Route as AuthenticatedProjectsProjectIdRouteImport } from './routes/_authenticated/projects.$projectId'
+import { Route as AuthenticatedProjectsNewRouteImport } from './routes/_authenticated/projects.new'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ConnexionRoute = ConnexionRouteImport.update({
-  id: '/connexion',
-  path: '/connexion',
+const AuthenticatedRoute = AuthenticatedRouteImport.update({
+  id: '/_authenticated',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DashboardRoute = DashboardRouteImport.update({
+const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AuthenticatedRoute,
 } as any)
-const MapRoute = MapRouteImport.update({
+const AuthenticatedMapRoute = AuthenticatedMapRouteImport.update({
   id: '/map',
   path: '/map',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AuthenticatedRoute,
 } as any)
-const StatsRoute = StatsRouteImport.update({
+const AuthenticatedStatsRoute = AuthenticatedStatsRouteImport.update({
   id: '/stats',
   path: '/stats',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AuthenticatedRoute,
 } as any)
-const CategoryCategoryIdRoute = CategoryCategoryIdRouteImport.update({
-  id: '/category/$categoryId',
-  path: '/category/$categoryId',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProjectsIndexRoute = ProjectsIndexRouteImport.update({
-  id: '/projects/',
-  path: '/projects/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProjectsProjectIdRoute = ProjectsProjectIdRouteImport.update({
-  id: '/projects/$projectId',
-  path: '/projects/$projectId',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProjectsNewRoute = ProjectsNewRouteImport.update({
-  id: '/projects/new',
-  path: '/projects/new',
-  getParentRoute: () => rootRouteImport,
-} as any)
+const AuthenticatedCategoryCategoryIdRoute =
+  AuthenticatedCategoryCategoryIdRouteImport.update({
+    id: '/category/$categoryId',
+    path: '/category/$categoryId',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedProjectsIndexRoute =
+  AuthenticatedProjectsIndexRouteImport.update({
+    id: '/projects/',
+    path: '/projects/',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedProjectsProjectIdRoute =
+  AuthenticatedProjectsProjectIdRouteImport.update({
+    id: '/projects/$projectId',
+    path: '/projects/$projectId',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedProjectsNewRoute =
+  AuthenticatedProjectsNewRouteImport.update({
+    id: '/projects/new',
+    path: '/projects/new',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/connexion': typeof ConnexionRoute
-  '/dashboard': typeof DashboardRoute
-  '/map': typeof MapRoute
-  '/stats': typeof StatsRoute
-  '/category/$categoryId': typeof CategoryCategoryIdRoute
-  '/projects/$projectId': typeof ProjectsProjectIdRoute
-  '/projects/new': typeof ProjectsNewRoute
-  '/projects/': typeof ProjectsIndexRoute
+  '/dashboard': typeof AuthenticatedDashboardRoute
+  '/map': typeof AuthenticatedMapRoute
+  '/stats': typeof AuthenticatedStatsRoute
+  '/category/$categoryId': typeof AuthenticatedCategoryCategoryIdRoute
+  '/projects/$projectId': typeof AuthenticatedProjectsProjectIdRoute
+  '/projects/new': typeof AuthenticatedProjectsNewRoute
+  '/projects/': typeof AuthenticatedProjectsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/connexion': typeof ConnexionRoute
-  '/dashboard': typeof DashboardRoute
-  '/map': typeof MapRoute
-  '/stats': typeof StatsRoute
-  '/category/$categoryId': typeof CategoryCategoryIdRoute
-  '/projects/$projectId': typeof ProjectsProjectIdRoute
-  '/projects/new': typeof ProjectsNewRoute
-  '/projects': typeof ProjectsIndexRoute
+  '/dashboard': typeof AuthenticatedDashboardRoute
+  '/map': typeof AuthenticatedMapRoute
+  '/stats': typeof AuthenticatedStatsRoute
+  '/category/$categoryId': typeof AuthenticatedCategoryCategoryIdRoute
+  '/projects/$projectId': typeof AuthenticatedProjectsProjectIdRoute
+  '/projects/new': typeof AuthenticatedProjectsNewRoute
+  '/projects': typeof AuthenticatedProjectsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/connexion': typeof ConnexionRoute
-  '/dashboard': typeof DashboardRoute
-  '/map': typeof MapRoute
-  '/stats': typeof StatsRoute
-  '/category/$categoryId': typeof CategoryCategoryIdRoute
-  '/projects/$projectId': typeof ProjectsProjectIdRoute
-  '/projects/new': typeof ProjectsNewRoute
-  '/projects/': typeof ProjectsIndexRoute
+  '/_authenticated': typeof AuthenticatedRouteWithChildren
+  '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
+  '/_authenticated/map': typeof AuthenticatedMapRoute
+  '/_authenticated/stats': typeof AuthenticatedStatsRoute
+  '/_authenticated/category/$categoryId': typeof AuthenticatedCategoryCategoryIdRoute
+  '/_authenticated/projects/$projectId': typeof AuthenticatedProjectsProjectIdRoute
+  '/_authenticated/projects/new': typeof AuthenticatedProjectsNewRoute
+  '/_authenticated/projects/': typeof AuthenticatedProjectsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/connexion'
     | '/dashboard'
     | '/map'
     | '/stats'
@@ -114,7 +114,6 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/connexion'
     | '/dashboard'
     | '/map'
     | '/stats'
@@ -125,26 +124,19 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
-    | '/connexion'
-    | '/dashboard'
-    | '/map'
-    | '/stats'
-    | '/category/$categoryId'
-    | '/projects/$projectId'
-    | '/projects/new'
-    | '/projects/'
+    | '/_authenticated'
+    | '/_authenticated/dashboard'
+    | '/_authenticated/map'
+    | '/_authenticated/stats'
+    | '/_authenticated/category/$categoryId'
+    | '/_authenticated/projects/$projectId'
+    | '/_authenticated/projects/new'
+    | '/_authenticated/projects/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  ConnexionRoute: typeof ConnexionRoute
-  DashboardRoute: typeof DashboardRoute
-  MapRoute: typeof MapRoute
-  StatsRoute: typeof StatsRoute
-  CategoryCategoryIdRoute: typeof CategoryCategoryIdRoute
-  ProjectsProjectIdRoute: typeof ProjectsProjectIdRoute
-  ProjectsNewRoute: typeof ProjectsNewRoute
-  ProjectsIndexRoute: typeof ProjectsIndexRoute
+  AuthenticatedRoute: typeof AuthenticatedRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -156,75 +148,92 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/connexion': {
-      id: '/connexion'
-      path: '/connexion'
-      fullPath: '/connexion'
-      preLoaderRoute: typeof ConnexionRouteImport
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/dashboard': {
-      id: '/dashboard'
+    '/_authenticated/dashboard': {
+      id: '/_authenticated/dashboard'
       path: '/dashboard'
       fullPath: '/dashboard'
-      preLoaderRoute: typeof DashboardRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedDashboardRouteImport
+      parentRoute: typeof AuthenticatedRoute
     }
-    '/map': {
-      id: '/map'
+    '/_authenticated/map': {
+      id: '/_authenticated/map'
       path: '/map'
       fullPath: '/map'
-      preLoaderRoute: typeof MapRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedMapRouteImport
+      parentRoute: typeof AuthenticatedRoute
     }
-    '/stats': {
-      id: '/stats'
+    '/_authenticated/stats': {
+      id: '/_authenticated/stats'
       path: '/stats'
       fullPath: '/stats'
-      preLoaderRoute: typeof StatsRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedStatsRouteImport
+      parentRoute: typeof AuthenticatedRoute
     }
-    '/category/$categoryId': {
-      id: '/category/$categoryId'
+    '/_authenticated/category/$categoryId': {
+      id: '/_authenticated/category/$categoryId'
       path: '/category/$categoryId'
       fullPath: '/category/$categoryId'
-      preLoaderRoute: typeof CategoryCategoryIdRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedCategoryCategoryIdRouteImport
+      parentRoute: typeof AuthenticatedRoute
     }
-    '/projects/': {
-      id: '/projects/'
+    '/_authenticated/projects/': {
+      id: '/_authenticated/projects/'
       path: '/projects'
       fullPath: '/projects/'
-      preLoaderRoute: typeof ProjectsIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedProjectsIndexRouteImport
+      parentRoute: typeof AuthenticatedRoute
     }
-    '/projects/$projectId': {
-      id: '/projects/$projectId'
+    '/_authenticated/projects/$projectId': {
+      id: '/_authenticated/projects/$projectId'
       path: '/projects/$projectId'
       fullPath: '/projects/$projectId'
-      preLoaderRoute: typeof ProjectsProjectIdRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedProjectsProjectIdRouteImport
+      parentRoute: typeof AuthenticatedRoute
     }
-    '/projects/new': {
-      id: '/projects/new'
+    '/_authenticated/projects/new': {
+      id: '/_authenticated/projects/new'
       path: '/projects/new'
       fullPath: '/projects/new'
-      preLoaderRoute: typeof ProjectsNewRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedProjectsNewRouteImport
+      parentRoute: typeof AuthenticatedRoute
     }
   }
 }
 
+interface AuthenticatedRouteChildren {
+  AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
+  AuthenticatedMapRoute: typeof AuthenticatedMapRoute
+  AuthenticatedStatsRoute: typeof AuthenticatedStatsRoute
+  AuthenticatedCategoryCategoryIdRoute: typeof AuthenticatedCategoryCategoryIdRoute
+  AuthenticatedProjectsProjectIdRoute: typeof AuthenticatedProjectsProjectIdRoute
+  AuthenticatedProjectsNewRoute: typeof AuthenticatedProjectsNewRoute
+  AuthenticatedProjectsIndexRoute: typeof AuthenticatedProjectsIndexRoute
+}
+
+const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
+  AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
+  AuthenticatedMapRoute: AuthenticatedMapRoute,
+  AuthenticatedStatsRoute: AuthenticatedStatsRoute,
+  AuthenticatedCategoryCategoryIdRoute: AuthenticatedCategoryCategoryIdRoute,
+  AuthenticatedProjectsProjectIdRoute: AuthenticatedProjectsProjectIdRoute,
+  AuthenticatedProjectsNewRoute: AuthenticatedProjectsNewRoute,
+  AuthenticatedProjectsIndexRoute: AuthenticatedProjectsIndexRoute,
+}
+
+const AuthenticatedRouteWithChildren = AuthenticatedRoute._addFileChildren(
+  AuthenticatedRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  ConnexionRoute: ConnexionRoute,
-  DashboardRoute: DashboardRoute,
-  MapRoute: MapRoute,
-  StatsRoute: StatsRoute,
-  CategoryCategoryIdRoute: CategoryCategoryIdRoute,
-  ProjectsProjectIdRoute: ProjectsProjectIdRoute,
-  ProjectsNewRoute: ProjectsNewRoute,
-  ProjectsIndexRoute: ProjectsIndexRoute,
+  AuthenticatedRoute: AuthenticatedRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
